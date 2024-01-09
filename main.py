@@ -10,7 +10,6 @@ def ekstrakArtikel(url):
     article.parse()
     return article.text
 
-
 def inputTeksPanjang():
     chunks = []
     print("Ketik atau paste kan teksmu di bawah ini. Tekan Ctrl+D (untuk Unix/Linux) atau Ctrl+Z (untuk Windows) di ikuti dengan Enter untuk menyelesaikan:")
@@ -28,13 +27,11 @@ def ringkasanByTeks(text):
     hasilRingkasan = summarize(text)
     return hasilRingkasan
 
-
 def ringkasanByURL(teks):
     soup = BeautifulSoup(teks, 'html.parser')
     text = soup.get_text()
     hasilRingkasan = ringkasanByTeks(text)
     return hasilRingkasan
-
 
 def ringkasanByFile(filepath):
     with open(filepath, 'r') as file:
@@ -42,12 +39,10 @@ def ringkasanByFile(filepath):
         hasilRingkasan = ringkasanByTeks(text)
         return hasilRingkasan
 
-
 def tingkatPresisi(teksAsli, hasilRingkasan):
     rouge = Rouge()
     scores = rouge.get_scores(hasilRingkasan, teksAsli)
     return scores[0]
-
 
 input_type = input("\n 1. URL\n 2. File\n 3. Teks\n\nMasukkan angka berdasarkan sumber teks: ")
 
